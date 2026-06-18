@@ -1,199 +1,124 @@
-```css
-* {
-  box-sizing: border-box;
-}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Bandimals Audio</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
 
-body {
-  margin: 0;
-  font-family: Arial, sans-serif;
-  background: linear-gradient(to bottom, #dff3ff, #ffffff);
-  color: #1f2d3d;
-}
+<header>
+  <h1>🎵 Bandimals Audio</h1>
+  <p class="verse">
+    "Let everything that has breath praise the Lord." — Psalm 150:6
+  </p>
+</header>
 
-header {
-  text-align: center;
-  padding: 40px 20px;
-  background: linear-gradient(to right, #7ec8ff, #b8e6ff);
-  box-shadow: 0 3px 10px rgba(0,0,0,.1);
-}
+<main>
 
-header h1 {
-  margin: 0;
-  font-size: 2.7rem;
-  color: #24527a;
-}
+  <section class="welcome-card">
+    <h2>Welcome!</h2>
+    <p>
+      Enjoy songs, recordings, and uplifting audio in a safe,
+      family-friendly environment.
+    </p>
+  </section>
 
-.verse {
-  margin-top: 15px;
-  color: #866c00;
-  font-style: italic;
-}
+  <section class="library-section">
+    <div class="section-top">
+      <h2>Audio Library</h2>
+      <span id="track-count">0 files</span>
+    </div>
 
-main {
-  max-width: 900px;
-  margin: auto;
-  padding: 20px;
-}
+    <div id="empty-state">
+      No audio has been added yet.
+    </div>
 
-.welcome-card,
-.track-card {
-  background: white;
-  border-radius: 20px;
-  padding: 20px;
-  margin-bottom: 20px;
-  box-shadow: 0 4px 15px rgba(0,0,0,.08);
-}
+    <div id="track-list"></div>
+  </section>
 
-.section-top {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-}
+</main>
 
-#track-count {
-  color: #24527a;
-  font-weight: bold;
-}
+<button id="owner-toggle">
+  Owner Tools
+</button>
 
-.track-card h3 {
-  margin-top: 0;
-  color: #24527a;
-}
+<div id="owner-panel" aria-hidden="true">
 
-.track-meta {
-  color: gray;
-  font-size: .9rem;
-  margin-bottom: 12px;
-}
+  <div class="panel-content">
 
-audio {
-  width: 100%;
-}
+    <button id="close-panel">✖</button>
 
-#empty-state {
-  text-align: center;
-  padding: 25px;
-  color: gray;
-}
+    <form id="pin-form">
+      <h2>Owner Login</h2>
 
-#owner-toggle {
-  position: fixed;
-  bottom: 20px;
-  right: 20px;
-  background: #ffd84d;
-  border: none;
-  border-radius: 50px;
-  padding: 15px 22px;
-  cursor: pointer;
-  font-weight: bold;
-  box-shadow: 0 4px 15px rgba(0,0,0,.15);
-}
+      <input
+        type="password"
+        name="pin"
+        placeholder="Enter PIN"
+        required
+      >
 
-#owner-panel {
-  position: fixed;
-  inset: 0;
-  background: rgba(0,0,0,.45);
-  display: none;
-  justify-content: center;
-  align-items: center;
-}
+      <button type="submit">
+        Unlock
+      </button>
+    </form>
 
-#owner-panel.open {
-  display: flex;
-}
+    <div id="owner-content" hidden>
 
-.panel-content {
-  background: white;
-  width: min(700px, 95%);
-  border-radius: 20px;
-  padding: 25px;
-  max-height: 90vh;
-  overflow-y: auto;
-}
+      <h2>Add Audio</h2>
 
-#close-panel {
-  float: right;
-  border: none;
-  background: none;
-  font-size: 1.2rem;
-  cursor: pointer;
-}
+      <form id="audio-form">
 
-input,
-button {
-  width: 100%;
-  padding: 12px;
-  margin-top: 10px;
-  border-radius: 12px;
-  border: 1px solid #cdd7e0;
-}
+        <input
+          type="text"
+          name="title"
+          placeholder="Track title"
+          required
+        >
 
-button {
-  background: #7ec8ff;
-  color: white;
-  border: none;
-  cursor: pointer;
-  font-weight: bold;
-}
+        <input
+          type="date"
+          id="track-date"
+          name="date"
+        >
 
-button:hover {
-  opacity: .9;
-}
+        <input
+          type="url"
+          name="url"
+          placeholder="Audio link (optional)"
+        >
 
-.owner-item {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  margin-top: 15px;
-  padding: 15px;
-  background: #f8fbff;
-  border-radius: 12px;
-}
+        <input
+          type="file"
+          name="file"
+          accept="audio/*"
+        >
 
-.owner-item span {
-  display: block;
-  color: gray;
-  font-size: .85rem;
-}
+        <button type="submit">
+          Add Audio
+        </button>
 
-.remove-button {
-  width: auto;
-  background: #ff6961;
-}
+      </form>
 
-#clear-local {
-  margin-top: 20px;
-  background: #ff6961;
-}
+      <h3>Your Audio</h3>
 
-#toast {
-  position: fixed;
-  left: 50%;
-  bottom: 30px;
-  transform: translateX(-50%);
-  background: #24527a;
-  color: white;
-  padding: 15px 25px;
-  border-radius: 50px;
-  opacity: 0;
-  transition: .3s;
-}
+      <div id="owner-track-list"></div>
 
-#toast.show {
-  opacity: 1;
-}
+      <button id="clear-local">
+        Remove All Audio
+      </button>
 
-@media (max-width: 700px) {
+    </div>
 
-  header h1 {
-    font-size: 2rem;
-  }
+  </div>
 
-  .section-top,
-  .owner-item {
-    flex-direction: column;
-    align-items: flex-start;
-  }
+</div>
 
-}
-```
+<div id="toast"></div>
+
+<script src="app.js"></script>
+
+</body>
+</html>
