@@ -374,6 +374,5 @@ clearLocal.addEventListener("click", async () => {
   showToast("All audio removed.");
 });
 
-loadTracks();
 resetForm();
 renderTracks();
