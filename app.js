@@ -9,56 +9,56 @@ let tracks = [
     title: "01. One, Two",
     date: "2026-06-18",
     kind: "url",
-    url: "audio/One, Two.mp3"
+    url: "audio/01 One, Two.mp3"
   },
 
   {
     title: "02. If I Were King",
     date: "2026-06-18",
     kind: "url",
-    url: "https://drive.google.com/file/d/1BRBGyNR0-MrLksWfnDUP6cn7Xk6uPOes/view"
-  }, 
-  
+    url: "audio/02 If I Were King.mp3"
+  },
+
   {
     title: "03. Friends",
     date: "2026-06-18",
     kind: "url",
-    url: "https://drive.google.com/file/d/1DErm7j4gFP1Vf0TOdD2TyFGURmrS3RBH/view"
+    url: "audio/03 Friends.mp3"
   },
 
   {
     title: "04. I Like",
     date: "2026-06-18",
     kind: "url",
-    url: "https://drive.google.com/file/d/10FUCiGl1fwhNkIaU8h2edvmwNbcFVA3R/view"
+    url: "audio/04 I Like.mp3"
   },
-  
+
   {
     title: "05. Hold On - Do Right",
     date: "2026-06-18",
     kind: "url",
-    url: "https://drive.google.com/file/d/1gwtysV_MFgHDvXEHzCMNhBE0cV0sX3pC/view"
+    url: "audio/05 Hold On - Do Right.mp3"
   },
 
   {
     title: "06. If I Just Stay In School",
     date: "2026-06-18",
     kind: "url",
-    url: "https://drive.google.com/file/d/1KJZiuCRgicfN8jMNEdEsQuaURELmUuAU/view"
+    url: "audio/06 If I Just Stay In School.mp3"
   },
-  
+
   {
     title: "07. I Guess I'm Ready For It All",
     date: "2026-06-18",
     kind: "url",
-    url: "https://drive.google.com/file/d/1g5uNfgKV20Qu5QZr1B20R4-hPYgUXEnt/view"
+    url: "audio/07 I Guess I'm Ready For It All.mp3"
   },
 
   {
     title: "08. One, Two (Instrumental)",
     date: "2026-06-18",
     kind: "url",
-    url: "https://drive.google.com/file/d/1rlH5oG-6r-3Bg0QNEXExW0gwr1Zui92W/view"
+    url: "audio/08 One, Two (Instrumental)mp3"
   }, 
   
   {
